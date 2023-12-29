@@ -25,12 +25,7 @@ export default function RootLayout({
           process.env.NODE_ENV === "development" && "debug-screens"
         }`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
           {children}
           <Toaster richColors visibleToasts={5} closeButton />

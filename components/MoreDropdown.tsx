@@ -90,11 +90,11 @@ function MoreDropdown() {
                 <Button
                   asChild
                   variant={"ghost"}
-                  className="w-6 p-0 dark:hover:bg-[#3C3C3C]"
+                  className="p-0 dark:hover:bg-[#3C3C3C]"
                 >
                   <ChevronLeft
                     onClick={() => setShowThemeToggle(false)}
-                    className="cursor-pointer"
+                    className="size-6 shrink-0 cursor-pointer"
                   />
                 </Button>
                 <span className="select-none font-bold">Change theme</span>

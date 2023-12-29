@@ -1,5 +1,5 @@
 import Posts from "@/components/Posts";
-import PostsSkeleton from "@/components/PostsSkeleton";
+import PostsSkeleton from "@/components/skeletons/PostsSkeleton";
 import { Suspense } from "react";
 
 interface Props {}

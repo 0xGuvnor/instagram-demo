@@ -6,7 +6,7 @@ interface Props {
   user: User & {
     username?: string | null | undefined;
   };
-  isActive: boolean;
+  isActive?: boolean;
 }
 
 function UserAvatar({ user, isActive }: Props) {

@@ -79,4 +79,12 @@
   .navLink {
     @apply w-full space-x-2 !px-3 md:!my-1.5 md:!justify-start;
   }
+
+  .dialogContent {
+    @apply !gap-0 overflow-hidden bg-white !p-0 dark:bg-neutral-800;
+  }
+
+  .postOption {
+    @apply flex w-full items-center justify-center border-b border-zinc-300 text-sm font-medium dark:border-neutral-700;
+  }
 }

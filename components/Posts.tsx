@@ -5,7 +5,6 @@ interface Props {}
 
 async function Posts({}: Props) {
   const posts = await fetchPosts();
-  // console.log(posts);
 
   return (
     <>

@@ -46,7 +46,7 @@ function PostOptions({ post, userId, className }: Props) {
             </form>
 
             <Link
-              href={`/dashboard/${post.id}/edit`}
+              href={`/dashboard/p/${post.id}/edit`}
               scroll={false}
               className="postOption p-3"
             >

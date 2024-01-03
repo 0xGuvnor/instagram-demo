@@ -5,8 +5,10 @@ import {
   BookmarkSchema,
   CreateComment,
   CreatePost,
+  DeleteComment,
   DeletePost,
   LikeSchema,
+  UpdatePost,
 } from "./schemas";
 import { getUserId } from "./utils";
 import prisma from "./prisma";
@@ -237,4 +239,58 @@ export async function createComment(values: z.infer<typeof CreateComment>) {
   } catch (error) {
     return { message: "Failed to create comment." };
   }
+}
+
+export async function deleteComment(formData: FormData) {
+  const userId = await getUserId();
+
+  const { id } = DeleteComment.parse({ id: formData.get("id") });
+
+  const comment = await prisma.comment.findUnique({ where: { id, userId } });
+
+  if (!comment) {
+    throw new Error("Comment not found.");
+  }
+
+  try {
+    await prisma.comment.delete({ where: { id } });
+
+    revalidatePath("/dashboard");
+    return { message: "Comment deleted." };
+  } catch (error) {
+    return { message: "Failed to delete comment." };
+  }
+}
+
+export async function updatePost(values: z.infer<typeof UpdatePost>) {
+  const userId = await getUserId();
+
+  const validatedFields = UpdatePost.safeParse(values);
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Failed to update post",
+    };
+  }
+
+  const { fileUrl, id, caption } = validatedFields.data;
+
+  const post = await prisma.post.findUnique({ where: { id, userId } });
+
+  if (!post) {
+    throw new Error("Post not found");
+  }
+
+  try {
+    await prisma.post.update({
+      where: { id },
+      data: { fileUrl, caption },
+    });
+  } catch (error) {
+    return { message: "Failed to update post." };
+  }
+
+  revalidatePath("/dashboard");
+  redirect("/dashboard");
 }

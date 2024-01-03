@@ -42,7 +42,7 @@ function Comments({ postId, comments, user }: Props) {
   const commentsCount = optimisticComments.length;
 
   return (
-    <div className="space-y-0.5">
+    <div className="space-y-0.5 px-3 sm:p-0">
       {commentsCount > 1 && (
         <Link
           scroll={false}

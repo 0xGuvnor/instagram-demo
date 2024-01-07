@@ -8,7 +8,9 @@ import { FcGoogle } from "react-icons/fc";
 function LoginForm() {
   return (
     <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
-      <h1 className={`text-xl dark:text-black`}>Please sign in to continue.</h1>
+      <h1 className={`font-pixel text-xl dark:text-black`}>
+        Please sign in to continue.
+      </h1>
 
       <LoginButton />
     </div>

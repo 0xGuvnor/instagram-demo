@@ -5,9 +5,9 @@ import { Button } from "./ui/button";
 
 function Header() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 flex w-full items-center justify-between gap-x-5 border-b border-zinc-300 bg-white px-3 py-2 dark:border-neutral-700 dark:bg-neutral-950 md:hidden">
+    <header className="fixed inset-x-0 top-0 z-50 flex w-full items-center justify-between gap-x-5 border-b border-zinc-300 bg-white px-3 py-2 md:hidden dark:border-neutral-700 dark:bg-neutral-950">
       <Link href={"/dashboard"}>
-        <p className={`text-xl font-semibold`}>Instasnaps</p>
+        <p className={`font-pixel text-xl font-semibold`}>Instasnaps</p>
       </Link>
 
       <div className="flex items-center space-x-2">

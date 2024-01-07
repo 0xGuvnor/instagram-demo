@@ -8,6 +8,7 @@ import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
 import { Toaster } from "sonner";
 import AuthProvider from "@/components/providers/AuthProvider";
+import { NeoPixel } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,8 +24,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${GeistSans.className} ${GeistMono.variable} ${
-          process.env.NODE_ENV === "development" && "debug-screens"
-        }`}
+          NeoPixel.variable
+        } ${process.env.NODE_ENV === "development" && "debug-screens"}`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <AuthProvider>

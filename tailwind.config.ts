@@ -20,6 +20,7 @@ export default withUt({
     extend: {
       fontFamily: {
         mono: ["var(--font-geist-mono)"],
+        pixel: ["var(--font-neo-pixel)"],
       },
       colors: {
         border: "hsl(var(--border))",

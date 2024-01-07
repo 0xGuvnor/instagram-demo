@@ -43,8 +43,9 @@ model Session {
     id           String   @id @default(cuid())
     sessionToken String   @unique @map("session_token")
     expires      DateTime
-    user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
     userId       String   @map("user_id")
+
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
     @@index([userId])
 }
@@ -62,12 +63,14 @@ model User {
     createdAt     DateTime  @default(now()) @map(name: "created_at")
     updatedAt     DateTime  @updatedAt @map(name: "updated_at")
 
-    accounts Account[]
-    sessions Session[]
-    posts    Post[]
-    saved    SavedPost[]
-    likes    Like[]
-    comments Comment[]
+    accounts   Account[]
+    sessions   Session[]
+    posts      Post[]
+    saved      SavedPost[]
+    likes      Like[]
+    comments   Comment[]
+    followedBy Follows[]   @relation("following")
+    following  Follows[]   @relation("follower")
 
     @@map(name: "users")
 }
@@ -129,4 +132,16 @@ model Comment {
 
     @@index([postId])
     @@index([userId])
+}
+
+model Follows {
+    followerId  String
+    followingId String
+
+    follower  User @relation("follower", fields: [followerId], references: [id])
+    following User @relation("following", fields: [followingId], references: [id])
+
+    @@id([followerId, followingId])
+    @@index([followerId])
+    @@index([followingId])
 }

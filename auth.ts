@@ -12,6 +12,7 @@ export const config: AuthOptions = {
   pages: {
     signIn: "/login",
   },
+  // @ts-ignore
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
